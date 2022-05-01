@@ -15,10 +15,9 @@ The following software needs to be installed in order to use the features of the
 
 ### Create a new story
 
-1. Fork this repository.
-2. Clone the forked repository into your device.
-3. Run the shortcuts under bin/ to open a new document that uses a template configured with the main styles used to for writing (you may need to modify the paths used in the shortcuts depending on your Microsoft Office / LibreOffice installation).
-4. Save documents as docx or odt.
+1. Clone this repository.
+2. Run the shortcuts under bin/ to open a new document that uses a template configured with the main styles used to for writing (you may need to modify the paths used in the shortcuts depending on your Microsoft Office / LibreOffice installation).
+3. Save documents as docx or odt.
 
 ### Commit your work
 
