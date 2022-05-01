@@ -1,0 +1,12 @@
+#!/bin/sh
+
+PROJECT_PATH=$(git rev-parse --show-toplevel)
+
+echo 'Converting documents to pdf...'
+# Docx to pdf
+"C:\Program Files\LibreOffice\program\soffice.exe" --headless --convert-to pdf:writer_pdf_Export --outdir $PROJECT_PATH/pdf $PROJECT_PATH/*.docx
+# odt to pdf
+"C:\Program Files\LibreOffice\program\soffice.exe" --headless --convert-to pdf:writer_pdf_Export --outdir $PROJECT_PATH/pdf $PROJECT_PATH/*.odt
+
+echo 'Adding pdf target files to commit...'
+git add $PROJECT_PATH/PDF/.

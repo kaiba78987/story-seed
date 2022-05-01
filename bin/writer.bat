@@ -1,0 +1,1 @@
+"C:\Program Files\LibreOffice\program\soffice" -n ../templates/story.dotx
