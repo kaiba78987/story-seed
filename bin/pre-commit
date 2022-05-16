@@ -1,12 +1,22 @@
 #!/bin/sh
 
+SOFFICE_PATH="C:\Program Files\LibreOffice\program\soffice.exe"
 PROJECT_PATH=$(git rev-parse --show-toplevel)
 
 echo 'Converting documents to pdf...'
 # Docx to pdf
-"C:\Program Files\LibreOffice\program\soffice.exe" --headless --convert-to pdf:writer_pdf_Export --outdir $PROJECT_PATH/pdf $PROJECT_PATH/*.docx
+DOCX_COUNT=$(ls -1 *.docx 2> "$PROJECT_PATH/errors.txt" | wc -l)
+if [ "$DOCX_COUNT" -gt 0 ]; then
+"$SOFFICE_PATH" --headless --convert-to pdf:writer_pdf_Export --outdir "$PROJECT_PATH/pdf" "$PROJECT_PATH/*.docx"
+fi
+
 # odt to pdf
-"C:\Program Files\LibreOffice\program\soffice.exe" --headless --convert-to pdf:writer_pdf_Export --outdir $PROJECT_PATH/pdf $PROJECT_PATH/*.odt
+ODT_COUNT=$(ls -1 *.odt 2> "$PROJECT_PATH/errors.txt"| wc -l)
+if [ "$ODT_COUNT" -gt 0 ]; then
+"$SOFFICE_PATH" --headless --convert-to pdf:writer_pdf_Export --outdir "$PROJECT_PATH/pdf" "$PROJECT_PATH/*.odt"
+fi
+
+# Add target files to commit
 
 echo 'Adding pdf target files to commit...'
-git add $PROJECT_PATH/PDF/.
+git add "$PROJECT_PATH/PDF/."
