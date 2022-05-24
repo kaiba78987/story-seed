@@ -16,6 +16,8 @@ if [ "$ODT_COUNT" -gt 0 ]; then
 "$SOFFICE_PATH" --headless --convert-to pdf:writer_pdf_Export --outdir "$PROJECT_PATH/pdf" "$PROJECT_PATH/*.odt"
 fi
 
+rm "$PROJECT_PATH/errors.txt"
+
 # Add target files to commit
 
 echo 'Adding pdf target files to commit...'
